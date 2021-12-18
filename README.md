@@ -6,4 +6,6 @@ Download, extract crispy-doom.asl whereever you want, open livesplit, edit layou
 
 
 This is my first autosplitter lol, hope you enjoy this
+
+
 So, have a nice day :D
