@@ -1,7 +1,7 @@
 state("crispy-doom")
 {
     int levelnum: "crispy-doom.exe", 0x19F11C;
-    int menuvalue: "crispy-doom.exe", 0x19E560;
+    int menuvalue: "crispy-doom.exe", 0x1A07D0;
 }
 
 init
@@ -27,15 +27,12 @@ split
 
 reset
 {
-    if(current.levelnum < old.levelnum){
-        return true;
-    }
-    if(current.levelnum == 0){
+    if(current.levelnum < old.levelnum && current.levelnum == 0){
         return true;
     }
 }
 
-isLoading  //it's didn't work :D
+isLoading //it is working... finally
 {
     if(current.menuvalue == 1){
         return true;
