@@ -1,15 +1,36 @@
 state("crispy-doom")
 {
-    int levelnum: "crispy-doom.exe", 0x19F11C;
+    int map: "crispy-doom.exe", 0x19F11C;
     int menuvalue: "crispy-doom.exe", 0x19E560;
     int playerHealth: "crispy-doom.exe", 0x19EAAC;
-    int gameState: "crispy-doom.exe", 0x19F120;
-    int levelTime: "crispy-doom.exe", 0x11EBB70; //just test
-    int demoPlaying: "crispy-doom.exe", 0x154EA28;
+    float levelTime: "crispy-doom.exe", 0x138BB70;
 }
 
 init
 {
+    byte[] exeMD5HashBytes = new byte[0];
+	using (var md5 = System.Security.Cryptography.MD5.Create())
+	{
+		using (var s = File.Open(modules.First().FileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+		{
+			exeMD5HashBytes = md5.ComputeHash(s);
+		}
+	}
+	var MD5Hash = exeMD5HashBytes.Select(x => x.ToString("X2")).Aggregate((a, b) => a + b);
+	//print("MD5Hash: " + MD5Hash.ToString());
+
+	if (MD5Hash == "7ED6381BE83340DF7C4D4EF67353EC18")
+	{
+		version = "v5.10.3";
+		print("Detected game version: " + version + " - MD5Hash: " + MD5Hash);
+	}
+
+    	else
+	{
+		version = "UNDETECTED";
+		print("UNDETECTED GAME VERSION - MD5Hash: " + MD5Hash);
+	}
+
     vars.timerRunning = 0;
 	vars.splitsCurrent = 0;
 	vars.splitsTemp = 0;
@@ -18,7 +39,7 @@ init
 
 start
 {
-    if(current.levelnum == 1 && current.menuvalue == 0 && vars.timerRunning == 0 && current.playerHealth != 0 && current.demoPlaying == 0)
+    if(current.map == 1 && current.menuvalue == 0 && vars.timerRunning == 0 && current.playerHealth != 0)
     {
         vars.timerRunning = 1;
         vars.splitsCurrent = 0;
@@ -30,7 +51,7 @@ start
 
 split
 {
-    if(current.levelnum > old.levelnum)
+    if(current.map > old.map)
     {
         vars.splitsTemp = vars.splitsTotal;
         return true;
@@ -39,7 +60,7 @@ split
 
 reset
 {
-    if(current.levelnum < old.levelnum)
+    if(current.map < old.map)
     {
         vars.timerRunning = 0;
         return true;
@@ -49,7 +70,7 @@ reset
         vars.timerRunning = 0;
         return true;
     }
-    if(current.levelnum == 1 && current.levelTime < old.levelTime)
+    if(current.map == 1 && current.levelTime < old.levelTime)
     {
         vars.timerRunning = 0;
         return true;
@@ -67,11 +88,7 @@ isLoading
 
 update
 {
-	vars.splitsCurrent = current.levelTime / 35;
-
-	if(current.levelnum == 1)
-		vars.splitsTotal = current.levelTime/35;
-	if(current.levelnum != 1 && current.gameState == 0)
-		vars.splitsTotal = vars.splitsTemp + current.levelTime / 35;
-	
+    if(version.Contains("UNDETECTED")){
+        return false;
+    }
 }
