@@ -8,6 +8,10 @@ Note: Autosplitter will work only on latest version of Crispy-Doom, autosplitter
 # Installation
 Download, extract crispy-doom.asl whereever you want, open livesplit, edit layout, +, control -> scriptable auto splitter and choose crispy-doom.asl
 
+# Links
+[Crispy-Doom 5.10.3](https://github.com/fabiangreffrath/crispy-doom/releases/download/crispy-doom-5.10.3/crispy-doom-5.10.3-win32.zip)
+[Ultimate Doom splits](https://splits.io/games/doom1)
+
 
 This is my first autosplitter lol, hope you enjoy this
 
