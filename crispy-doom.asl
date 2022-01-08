@@ -6,6 +6,16 @@ state("crispy-doom")
     int levelTime: "crispy-doom.exe", 0x10BB70;
 }
 
+startup
+{
+    settings.Add("Enable autosplitter");
+    settings.CurrentDefaultParent = "Enable autosplitter";
+    settings.Add("Start");
+    settings.Add("Reset");
+    settings.Add("Split");
+    settings.Add("Load-Removal");
+}
+
 init
 {
     byte[] exeMD5HashBytes = new byte[0];
@@ -39,7 +49,7 @@ init
 
 start
 {
-    if(current.map == 1 && current.menuvalue == 0 && vars.timerRunning == 0 && current.playerHealth != 0)
+    if(current.map == 1 && current.menuvalue == 0 && vars.timerRunning == 0 && current.playerHealth != 0 && settings["Start"])
     {
         vars.timerRunning = 1;
         vars.splitsCurrent = 0;
@@ -51,7 +61,7 @@ start
 
 split
 {
-    if(current.map > old.map)
+    if(current.map > old.map && settings["Split"])
     {
         vars.splitsTemp = vars.splitsTotal;
         return true;
@@ -60,17 +70,17 @@ split
 
 reset
 {
-    if(current.map < old.map)
+    if(current.map < old.map && settings["Reset"])
     {
         vars.timerRunning = 0;
         return true;
     }
-    if(current.playerHealth == 0)
+    if(current.playerHealth == 0 && settings["Reset"])
     {
         vars.timerRunning = 0;
         return true;
     }
-    if(current.map == 1 && current.levelTime < old.levelTime)
+    if(current.map == 1 && current.levelTime < old.levelTime && settings["Reset"])
     {
         vars.timerRunning = 0;
         return true;
@@ -79,7 +89,7 @@ reset
 
 isLoading
 {
-    if(current.levelTime == old.levelTime)
+    if(current.levelTime == old.levelTime && settings["Load-Removal"])
     {
         return true;
     } else{
