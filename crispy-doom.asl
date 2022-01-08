@@ -3,7 +3,7 @@ state("crispy-doom")
     int map: "crispy-doom.exe", 0x19F11C;
     int menuvalue: "crispy-doom.exe", 0x19E560;
     int playerHealth: "crispy-doom.exe", 0x19EAAC;
-    float levelTime: "crispy-doom.exe", 0x138BB70;
+    int levelTime: "crispy-doom.exe", 0x10BB70;
 }
 
 init
@@ -79,7 +79,8 @@ reset
 
 isLoading
 {
-    if(current.menuvalue == 1){
+    if(current.levelTime == old.levelTime)
+    {
         return true;
     } else{
         return false;
