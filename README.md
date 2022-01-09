@@ -3,7 +3,7 @@ This is simple autosplitter for Crispy-Doom, if you have any questions, then wri
 
 Tested with latest version of Ultimate Doom, Plutonia, TNT, and variety of custom WADs
 
-Note: Autosplitter will work only on latest version of Crispy-Doom, autosplitter is not tested on earlier versions
+Note: Autosplitter will work only on latest version of Crispy-Doom, autosplitter was not tested on earlier versions
 
 # Installation
 Download, extract crispy-doom.asl whereever you want, open livesplit, edit layout, +, control -> scriptable auto splitter and choose crispy-doom.asl
