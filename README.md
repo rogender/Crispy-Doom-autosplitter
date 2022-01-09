@@ -12,9 +12,3 @@ Download, extract crispy-doom.asl whereever you want, open livesplit, edit layou
 [Crispy-Doom 5.10.3](https://github.com/fabiangreffrath/crispy-doom/releases/download/crispy-doom-5.10.3/crispy-doom-5.10.3-win32.zip)
 
 [Ultimate Doom splits](https://splits.io/games/doom1)
-
-
-This is my first autosplitter lol, hope you enjoy this
-
-
-So, have a nice day :D
