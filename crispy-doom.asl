@@ -1,4 +1,4 @@
-state("crispy-doom")
+state("crispy-doom", "v5.10.3")
 {
     int map: "crispy-doom.exe", 0x19F11C;
     int menuvalue: "crispy-doom.exe", 0x19E560;
