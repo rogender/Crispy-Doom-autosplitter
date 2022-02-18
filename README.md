@@ -1,4 +1,4 @@
-# Crispy-Doom-autosplitter
+# Crispy-Doom-autosplitter (OBSOLETE)
 This is simple autosplitter for Crispy-Doom, if you have any questions, then write to me in discord (keyboardcrash#7833)
 
 Tested with latest version of Ultimate Doom, Plutonia, TNT, and variety of custom WADs
