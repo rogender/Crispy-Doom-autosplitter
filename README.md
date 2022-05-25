@@ -5,6 +5,9 @@ Tested with latest version of Ultimate Doom, Plutonia, TNT, and variety of custo
 
 Note: Autosplitter will work only on latest version of Crispy-Doom, autosplitter was not tested on earlier versions
 
+
+If you want to see obsolete script - https://pastebin.com/raw/FwNBxmN9
+
 # Installation
 Download, extract crispy-doom.asl whereever you want, open livesplit, edit layout, +, control -> scriptable auto splitter and choose crispy-doom.asl
 
